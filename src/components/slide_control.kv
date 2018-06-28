@@ -1,0 +1,20 @@
+#:kivy 1.10.0
+
+
+<SlideControl>:
+    slider: slider
+
+    Label:
+        size_hint: 0.4, 1
+        text: root.label
+    Slider:
+        size_hint: 0.4, 1
+        id: slider
+        min: root.min
+        max: root.max
+        step: root.step
+        value: root.value
+    Label:
+        size_hint: 0.2, 1
+        fontsize: 18
+        text: root.value_label

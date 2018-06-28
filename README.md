@@ -1,6 +1,6 @@
 # png-compress
 
-Very effectively compresses PNG images using K-means clustering.
+Very effective lossy png image compression via k-means color clustering.
 
 ```bash
 usage: compress_png.py [-h] -o OUTPUT [-k COLORS] [-c COMPRESSION] input
@@ -18,4 +18,5 @@ optional arguments:
                         Amount of PNG compression (0=none, 9=full)
 ```
 
-Especially useful for compressing scanned text documents when k=2.
+A minimal GUI using Kivy is also available in src/.
+It can be run by installing kivy ~1.10 and running `python src/main.py`

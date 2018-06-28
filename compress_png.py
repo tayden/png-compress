@@ -4,7 +4,6 @@ import cv2
 import numpy as np
 import argparse
 
-
 def quantize_colors(img, K):
     """Reduce the number of colors in img so only K distinct colours remain. Uses K-means."""
 
@@ -42,7 +41,7 @@ def main(*args, **kwargs):
 
     # Write the compressed png to output
     opts = [cv2.IMWRITE_PNG_COMPRESSION, kwargs['compression']]
-    success = cv2.imwrite(kwargs['output'], img, opts)
+    cv2.imwrite(kwargs['output'], img, opts)
 
 
 if __name__ == "__main__":

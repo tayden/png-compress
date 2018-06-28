@@ -1,0 +1,62 @@
+#:kivy 1.10.0
+#:include components/load_dialog.kv
+#:include components/save_dialog.kv
+#:include components/slide_control.kv
+#:include components/img_preview.kv
+
+
+<Root>:
+    img_preview: img_preview
+    colors: colors
+    compression: compression
+    orientation: 'horizontal'
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        ImgPreview:
+            id: img_preview
+
+        BoxLayout:
+            size_hint: 1, 0.1
+            pos_hint: {'right': 1}
+            Label:
+                size_hint: 0.8, 1
+                text: root.filename
+            Button: 
+                size_hint: 0.15, 1
+                text: 'Load'
+                on_release: root.show_load()
+    
+    BoxLayout:
+        orientation: 'vertical'
+
+        SlideControl:
+            id: colors
+            size_hint: 1, 0.5
+            label: "Number of Colors"
+            min: 1
+            max: 8
+            step: 1
+            value: 3
+            value_label: str(2**self.slider.value)
+            update: root.update_preview
+
+        SlideControl:
+            id: compression
+            size_hint: 1, 0.5
+            label: "Compression Amount"
+            min: 0
+            max: 9
+            step: 1
+            value: 9
+            value_label: str(self.slider.value)
+
+        BoxLayout:
+            size_hint: 0.15, 0.1
+            pos_hint: {'right': 1}
+
+            Button:
+                text: "Save"
+                disabled: root.filename == ""
+                on_release: root.show_save()
